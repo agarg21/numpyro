@@ -83,7 +83,7 @@ jobs:
           uv pip freeze
       - name: Test with pytest
         run: |
-          CI=1 uv run pytest -vs -k "not test_example" --durations=100 --ignore=test/infer/ --ignore=test/contrib/
+          CI=1 uv run pytest -vs -n auto -k "not test_example" --durations=100 --ignore=test/infer/ --ignore=test/contrib/
       - name: Test x64
         run: |
           JAX_ENABLE_X64=1 uv run pytest -vs test/test_distributions.py -k "powerLaw or Dagum"
@@ -136,9 +136,9 @@ jobs:
           uv pip freeze
       - name: Test with pytest
         run: |
-          uv run pytest -vs --durations=20 test/contrib --ignore=test/contrib/stochastic_support/test_dcc.py
-          uv run pytest -vs --durations=20 test/infer --ignore=test/infer/test_mcmc.py --ignore=test/contrib/test_nested_sampling.py
-          uv run pytest -vs --durations=20 test/infer/test_mcmc.py
+          uv run pytest -vs -n auto --durations=20 test/contrib --ignore=test/contrib/stochastic_support/test_dcc.py
+          uv run pytest -vs -n auto --durations=20 test/infer --ignore=test/infer/test_mcmc.py --ignore=test/contrib/test_nested_sampling.py
+          uv run pytest -vs -n auto --durations=20 test/infer/test_mcmc.py
       - name: Test x64
         run: |
           JAX_ENABLE_X64=1 uv run pytest -vs test/infer/test_mcmc.py -k x64

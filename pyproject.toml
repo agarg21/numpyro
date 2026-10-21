@@ -90,6 +90,7 @@ test = [
     "importlib-metadata<5.0",
     "pyro-api>=0.1.1",
     "pytest>=4.1",
+    "pytest-xdist",
     "ruff>=0.1.8",
     "scikit-learn",
     "scipy>=1.9",
